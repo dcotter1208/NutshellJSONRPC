@@ -1,0 +1,13 @@
+PODS:
+  - AFJSONRPCClient (1.0.0):
+    - AFNetworking (~> 1.3)
+  - AFNetworking (1.3.4)
+
+DEPENDENCIES:
+  - AFJSONRPCClient
+
+SPEC CHECKSUMS:
+  AFJSONRPCClient: c84c37fa15f997276aab0015a4b6d3fc127b76c9
+  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+
+COCOAPODS: 0.39.0
