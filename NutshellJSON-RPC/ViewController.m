@@ -26,11 +26,19 @@
     [client setAuthorizationHeaderWithUsername:@"jim@demo.nutshell.com" password:@"43c789d483fd76547b1f157e3cf5e580b95b9d8c"];
     
     [client invokeMethod:@"findContacts"
-          withParameters:@{@"limit": @100, @"orderBy": @"givenName", @"stub": @false}
+          withParameters:@{@"limit": @100, @"orderBy": @"givenName", @"stubResponses": @true}
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      
                      //success handling
                      NSLog(@"%@", responseObject);
+                     
+                     NSMutableArray *array = [NSMutableArray array];
+                     
+                     for (NSDictionary *dict in responseObject) {
+                         [array addObject:dict];
+                         NSLog(@"ARRAY COUNT: %lu", array.count);
+                     }
+                    
                      
                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      
