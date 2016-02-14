@@ -31,18 +31,25 @@
     [client setAuthorizationHeaderWithUsername:@"jim@demo.nutshell.com" password:@"43c789d483fd76547b1f157e3cf5e580b95b9d8c"];
     
     [client invokeMethod:@"findContacts"
-          withParameters:@{@"limit": @100, @"orderBy": @"givenName"}
+          withParameters:@{@"stubResponses": @false, @"limit": @100, @"orderBy": @"givenName"}
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
                          NSLog(@"Data returned");
                          for (NSDictionary *dict in responseObject) {
-                             Contact *contact = [Contact contactWithName:[dict objectForKey:@"name"]];
-//                             contact.email = [dict objectForKey:@"email"];
-                             NSLog(@"%@", dict);
-                             [_contactArray addObject:contact];
-//                             NSLog(@"%@", contact.name);
-//                             NSLog(@"%lu", _contactArray.count);
+//                             NSLog(@"%@", dict);
+                             
+                             if ([dict objectForKey:@"email"] != NULL) {
+                                 NSDictionary *nameDict = [dict objectForKey:@"name"];
+                                 NSDictionary *emailDict = [dict objectForKey:@"email"];
+                                 Contact *contact = [Contact contactWithName:[nameDict objectForKey:@"displayName"]];
+                                 contact.email = [emailDict objectForKey:@"--primary"];
+                                 NSLog(@"%@", contact.name);
+                                 NSLog(@"%@", contact.email);
+                                 [_contactArray addObject:contact];
+                                 NSLog(@"%lu", _contactArray.count);
+                             }
+                             
                              [self.tableView reloadData];
                              
                          }
@@ -70,7 +77,7 @@
     
     Contact *contact = [self.contactArray objectAtIndex:indexPath.row];
     cell.textLabel.text = contact.name;
-//    cell.detailTextLabel.text = contact.email;
+    cell.detailTextLabel.text = contact.email;
     return cell;
     
 }
