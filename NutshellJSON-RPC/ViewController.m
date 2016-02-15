@@ -14,6 +14,7 @@
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -21,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.activityIndicator startAnimating];
     
     _contactArray = [NSMutableArray array];
     
@@ -31,37 +34,25 @@
     [client setAuthorizationHeaderWithUsername:@"jim@demo.nutshell.com" password:@"43c789d483fd76547b1f157e3cf5e580b95b9d8c"];
     
     [client invokeMethod:@"findContacts"
-          withParameters:@{@"stubResponses": @false, @"limit": @100, @"orderBy": @"givenName"}
+          withParameters:@{@"entityType": @"Contacts", @"stubResponses": @false, @"limit": @100, @"orderBy": @"givenName"}
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
-                         NSLog(@"Data returned");
                          for (NSDictionary *dict in responseObject) {
-//                             NSLog(@"%@", dict);
-                             
                              if ([dict objectForKey:@"email"] != NULL) {
-                                 NSDictionary *nameDict = [dict objectForKey:@"name"];
-                                 NSDictionary *emailDict = [dict objectForKey:@"email"];
-                                 Contact *contact = [Contact contactWithName:[nameDict objectForKey:@"displayName"]];
-                                 contact.email = [emailDict objectForKey:@"--primary"];
-                                 NSLog(@"%@", contact.name);
-                                 NSLog(@"%@", contact.email);
+                                 Contact *contact = [Contact contactWithName:[dict valueForKeyPath:@"name.displayName"]];
+                                 contact.email = [dict valueForKeyPath:@"email.--primary"];
                                  [_contactArray addObject:contact];
-                                 NSLog(@"%lu", _contactArray.count);
                              }
-                             
+                             [self.activityIndicator stopAnimating];
                              [self.tableView reloadData];
-                             
                          }
-                         
                      });
 
                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                     
                      NSLog(@"error: %@", [error description]);
                  }];
     
-
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -78,12 +69,8 @@
     Contact *contact = [self.contactArray objectAtIndex:indexPath.row];
     cell.textLabel.text = contact.name;
     cell.detailTextLabel.text = contact.email;
+    
     return cell;
-    
-}
-- (IBAction)reloadTableView:(id)sender {
-    
-    [self.tableView reloadData];
     
 }
 
