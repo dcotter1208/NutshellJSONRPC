@@ -34,7 +34,8 @@
     [client setAuthorizationHeaderWithUsername:@"jim@demo.nutshell.com" password:@"43c789d483fd76547b1f157e3cf5e580b95b9d8c"];
     
     [client invokeMethod:@"findContacts"
-          withParameters:@{@"entityType": @"Contacts", @"stubResponses": @false, @"limit": @100, @"orderBy": @"givenName"}
+          withParameters:@{@"stubResponses": @false, @"limit": @100, @"orderBy": @"givenName"}
+     
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
