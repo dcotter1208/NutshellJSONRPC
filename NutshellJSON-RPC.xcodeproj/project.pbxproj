@@ -16,6 +16,7 @@
 		C0712C2A1C6D300700A2C3D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0712C281C6D300700A2C3D3 /* LaunchScreen.storyboard */; };
 		C0712C351C6D300700A2C3D3 /* NutshellJSON_RPCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0712C341C6D300700A2C3D3 /* NutshellJSON_RPCTests.m */; };
 		C0712C401C6D300700A2C3D3 /* NutshellJSON_RPCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0712C3F1C6D300700A2C3D3 /* NutshellJSON_RPCUITests.m */; };
+		C0F983881C6F794800E9B9FB /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F983871C6F794800E9B9FB /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		C0712C3B1C6D300700A2C3D3 /* NutshellJSON-RPCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NutshellJSON-RPCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0712C3F1C6D300700A2C3D3 /* NutshellJSON_RPCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NutshellJSON_RPCUITests.m; sourceTree = "<group>"; };
 		C0712C411C6D300700A2C3D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0F983861C6F794800E9B9FB /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		C0F983871C6F794800E9B9FB /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		C7CAA39C3052003FFF64A806 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E15B6A9EF67E5A690AFF36 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,6 +132,8 @@
 				C0712C1E1C6D300700A2C3D3 /* AppDelegate.m */,
 				C0712C201C6D300700A2C3D3 /* ViewController.h */,
 				C0712C211C6D300700A2C3D3 /* ViewController.m */,
+				C0F983861C6F794800E9B9FB /* Contact.h */,
+				C0F983871C6F794800E9B9FB /* Contact.m */,
 				C0712C231C6D300700A2C3D3 /* Main.storyboard */,
 				C0712C261C6D300700A2C3D3 /* Assets.xcassets */,
 				C0712C281C6D300700A2C3D3 /* LaunchScreen.storyboard */,
@@ -345,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F983881C6F794800E9B9FB /* Contact.m in Sources */,
 				C0712C221C6D300700A2C3D3 /* ViewController.m in Sources */,
 				C0712C1F1C6D300700A2C3D3 /* AppDelegate.m in Sources */,
 				C0712C1C1C6D300700A2C3D3 /* main.m in Sources */,
